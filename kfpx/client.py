@@ -8,6 +8,14 @@ def apply_recurring_run(
     description,
     params,
 ) -> any:
+    """
+    Apply a recurring run to an experiment.
+    The differences between this and the create_recurring_run function are:
+    1. The function needs the kfp_client as an argument.
+    2. The function needs the experiment_name instead of experiment_id as an argument.
+    3. The function will delete all the jobs with the same name as the job_name.
+    """
+
     experiment_id = kfp_client.get_experiment(experiment_name=experiment_name).id
     # Delete exists jobs with the same name
     # https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.list_recurring_runs
@@ -19,7 +27,7 @@ def apply_recurring_run(
         matched_jobs = list(filter(lambda j: j.name == job_name, jobs))
         if len(matched_jobs) != 0:
             for j in matched_jobs:
-                print(f"Warning: delete exists job: {j.name}")
+                print(f"Warning: deleting exists job: {j.name}, {j.id}")
                 kfp_client.delete_job(j.id)
 
     # https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.create_recurring_run
