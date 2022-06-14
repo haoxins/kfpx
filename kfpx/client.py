@@ -14,6 +14,7 @@ def apply_recurring_run(
     1. The function needs the kfp_client as an argument.
     2. The function needs the experiment_name instead of experiment_id as an argument.
     3. The function will delete all the jobs with the same name as the job_name.
+    4. The function will set enabled to be True and max_concurrency to be 1.
     """
 
     experiment_id = kfp_client.get_experiment(experiment_name=experiment_name).id
