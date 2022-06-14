@@ -29,7 +29,7 @@ def apply_recurring_run(
         if len(matched_jobs) != 0:
             for j in matched_jobs:
                 print(f"Warning: deleting exists job: {j.name}, {j.id}")
-                kfp_client.delete_job(j.id)
+                kfp_client._job_api.delete_job(id=j.id)
 
     # https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.create_recurring_run
     return kfp_client.create_recurring_run(
