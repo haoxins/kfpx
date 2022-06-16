@@ -18,7 +18,9 @@ def apply_recurring_run(
     4. The function will set enabled to be True and max_concurrency to be 1.
     """
 
-    experiment_id = kfp_client.get_experiment(experiment_name=experiment_name, namespace=namespace).id
+    experiment_id = kfp_client.get_experiment(
+        experiment_name=experiment_name, namespace=namespace
+    ).id
     # Delete exists jobs with the same name
     # https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.list_recurring_runs
     jobs = kfp_client.list_recurring_runs(
