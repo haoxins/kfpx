@@ -5,7 +5,6 @@ def apply_recurring_run(
     pipeline_package_path,
     job_name,
     enable_caching,
-    description,
     params,
     namespace=None,
 ) -> any:
@@ -38,7 +37,7 @@ def apply_recurring_run(
     return kfp_client.create_recurring_run(
         experiment_id=experiment_id,
         job_name=job_name,
-        description=description,
+        description=job_name,
         # https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format
         cron_expression=cron_expression,
         max_concurrency=1,
