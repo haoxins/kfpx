@@ -25,7 +25,7 @@ def apply_recurring_run(
     except Exception as e:
         print(f"Get experiment failed, the error is {e}")
         print(
-            "We think the experiment not exists, please create it in the Web UI first."
+            "Warning! We think the experiment not exists, please create it in the Web UI first."
         )
         return
 
