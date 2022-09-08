@@ -17,25 +17,17 @@ def apply_recurring_run(
     4. The function will set enabled to be True and max_concurrency to be 1.
     """
 
+    experiment_id = ""
     try:
         experiment_id = kfp_client.get_experiment(
             experiment_name=experiment_name, namespace=namespace
         ).id
     except Exception as e:
         print(f"Get experiment failed, the error is {e}")
-        print("We think the experiment not exists, create a new recurring run")
-        return kfp_client.create_recurring_run(
-            experiment_id=experiment_id,
-            job_name=job_name,
-            description=job_name,
-            # https://pkg.go.dev/github.com/robfig/cron#hdr-CRON_Expression_Format
-            cron_expression=cron_expression,
-            max_concurrency=1,
-            pipeline_package_path=pipeline_package_path,
-            enabled=True,
-            enable_caching=enable_caching,
-            params=params,
+        print(
+            "We think the experiment not exists, please create it in the Web UI first."
         )
+        return
 
     # Delete exists jobs with the same name
     # https://kubeflow-pipelines.readthedocs.io/en/stable/source/kfp.client.html#kfp.Client.list_recurring_runs
