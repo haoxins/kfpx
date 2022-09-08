@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kfpx"
-version = "0.2.1"
+version = "0.2.2"
 description = "Extends the kfp package"
 authors = ["Hao Xin <haoxinst@gmail.com>"]
 
