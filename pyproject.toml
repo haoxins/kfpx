@@ -9,7 +9,7 @@ python = "^3.9"
 kfp = "1.8.12"
 
 [tool.poetry.dev-dependencies]
-black = "^22.8.0"
+black = "^23.1.0"
 isort = "^5.10.1"
 poetry-exec-plugin = "0.3.5"
 
