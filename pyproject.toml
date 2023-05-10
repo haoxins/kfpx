@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "kfpx"
-version = "0.2.2"
+version = "0.2.3"
 description = "Extends the kfp package"
 authors = ["Hao Xin <haoxinst@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-kfp = "1.8.12"
+kfp = "1.8.21"
 
 [tool.poetry.dev-dependencies]
 black = "^22.8.0"
@@ -21,5 +21,5 @@ test = "poetry run pytest -s"
 profile = "black"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
