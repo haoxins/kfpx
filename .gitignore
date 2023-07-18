@@ -2,5 +2,5 @@
 
 .venv
 dist
-poetry.lock
+*.lock
 __pycache__
